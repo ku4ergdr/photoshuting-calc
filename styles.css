@@ -1,0 +1,255 @@
+:root {
+  color-scheme: light dark;
+  --bg: #f5f7fb;
+  --text: #1c1c1c;
+  --card-bg: #ffffff;
+  --accent: #2f80ed;
+  --accent-dark: #1c5fb4;
+  --border: #dbe3f1;
+  --muted: #6b7280;
+  --success: #0f9d58;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  padding: 2.5rem 1.5rem 1.5rem;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(47, 128, 237, 0.15), rgba(111, 207, 151, 0.1));
+}
+
+.header h1 {
+  margin: 0 0 0.5rem;
+  font-size: 2.2rem;
+}
+
+.subtitle {
+  margin: 0 auto;
+  max-width: 640px;
+  color: var(--muted);
+}
+
+.content {
+  flex: 1;
+  width: min(960px, 100%);
+  margin: 0 auto;
+  padding: 1.5rem;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 1.75rem;
+  box-shadow: 0 10px 40px rgba(15, 23, 42, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.card h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.field__label {
+  font-weight: 600;
+}
+
+.field input[type="number"] {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.field input[type="number"]:focus {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(47, 128, 237, 0.2);
+}
+
+.field-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.fieldset {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem 1.25rem 1.25rem;
+  margin: 1.5rem 0;
+}
+
+.fieldset legend {
+  font-weight: 600;
+  padding: 0 0.5rem;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.checkbox input[type="checkbox"] {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.hint {
+  margin: 0.5rem 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--accent);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.button:hover {
+  background: rgba(47, 128, 237, 0.1);
+}
+
+.button--primary {
+  background: var(--accent);
+  color: #fff;
+}
+
+.button--primary:hover {
+  background: var(--accent-dark);
+}
+
+.toggle {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 999px;
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.toggle:hover {
+  background: rgba(47, 128, 237, 0.1);
+}
+
+.hidden {
+  display: none;
+}
+
+.result {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-size: 1.05rem;
+}
+
+.result strong {
+  font-size: 1.3rem;
+}
+
+.result__highlight {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.result__success {
+  color: var(--success);
+}
+
+.rates-summary {
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  background: rgba(47, 128, 237, 0.08);
+  color: #0f172a;
+}
+
+.footer {
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--muted);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b1120;
+    --text: #e2e8f0;
+    --card-bg: #111c33;
+    --accent: #60a5fa;
+    --accent-dark: #3b82f6;
+    --border: #1e3a8a;
+    --muted: #94a3b8;
+    --success: #34d399;
+  }
+
+  .card {
+    border: 1px solid rgba(96, 165, 250, 0.1);
+    box-shadow: 0 10px 50px rgba(15, 23, 42, 0.4);
+  }
+
+  .rates-summary {
+    color: #e2e8f0;
+  }
+}
+
+@media (max-width: 640px) {
+  .header {
+    padding: 2rem 1rem 1rem;
+  }
+
+  .card {
+    padding: 1.25rem;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .button,
+  .button--primary,
+  .toggle {
+    width: 100%;
+  }
+}

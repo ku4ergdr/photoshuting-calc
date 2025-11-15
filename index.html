@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Калькулятор стоимости фотосъёмки</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <h1>Калькулятор стоимости фотосъёмки</h1>
+      <p class="subtitle">Помогает оценить стоимость заказа и сравнить её с желаемым ежемесячным доходом.</p>
+    </header>
+
+    <main class="content">
+      <section class="card" id="goal-section">
+        <h2>Финансовая цель</h2>
+        <label class="field">
+          <span class="field__label">Желаемый доход в месяц (₽)</span>
+          <input type="number" id="monthly-goal" min="0" step="100" placeholder="Например, 150000">
+        </label>
+      </section>
+
+      <section class="card" id="rates-section">
+        <h2>Настройки администратора</h2>
+        <p class="hint">Эти значения определяют ставки по умолчанию и базовый коэффициент сложности. Изменения сохраняются в браузере.</p>
+        <button class="toggle" id="admin-toggle" type="button">Показать настройки администратора</button>
+        <form class="admin-form hidden" id="admin-form">
+          <div class="field-grid">
+            <label class="field">
+              <span class="field__label">Ставка за дорогу (₽ / час)</span>
+              <input type="number" id="admin-travel-rate" min="0" step="100">
+            </label>
+            <label class="field">
+              <span class="field__label">Ставка за съёмку (₽ / час)</span>
+              <input type="number" id="admin-shoot-rate" min="0" step="100">
+            </label>
+            <label class="field">
+              <span class="field__label">Ставка за обработку (₽ / час)</span>
+              <input type="number" id="admin-editing-rate" min="0" step="100">
+            </label>
+            <label class="field">
+              <span class="field__label">Базовый коэффициент сложности</span>
+              <input type="number" id="admin-base-complexity" min="0" step="0.1">
+            </label>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="button button--primary">Сохранить</button>
+            <button type="button" class="button" id="admin-reset">Сбросить к значениям по умолчанию</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="card" id="calculator-section">
+        <h2>Расчёт заказа</h2>
+        <form id="calculator-form">
+          <div class="field-grid">
+            <label class="field">
+              <span class="field__label">Часы в дороге</span>
+              <input type="number" id="travel-hours" min="0" step="0.5" placeholder="0">
+            </label>
+            <label class="field">
+              <span class="field__label">Часы съёмки</span>
+              <input type="number" id="shoot-hours" min="0" step="0.5" placeholder="0">
+            </label>
+            <label class="field">
+              <span class="field__label">Часы обработки</span>
+              <input type="number" id="editing-hours" min="0" step="0.5" placeholder="0">
+            </label>
+            <label class="field">
+              <span class="field__label">Коэффициент сложности</span>
+              <input type="number" id="complexity" min="0" step="0.1">
+            </label>
+          </div>
+
+          <fieldset class="fieldset">
+            <legend>Дополнительные условия</legend>
+            <label class="checkbox">
+              <input type="checkbox" id="weekend-checkbox">
+              <span>Съёмка в выходной день</span>
+            </label>
+            <label class="checkbox">
+              <input type="checkbox" id="odd-hours-checkbox">
+              <span>Ранняя или поздняя съёмка</span>
+            </label>
+            <p class="hint">Каждый выбранный пункт увеличивает коэффициент сложности на 10%.</p>
+          </fieldset>
+
+          <div class="rates-summary">
+            <p>Текущие ставки: дорога — <span id="display-travel-rate">0</span> ₽/час, съёмка — <span id="display-shoot-rate">0</span> ₽/час, обработка — <span id="display-editing-rate">0</span> ₽/час.</p>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="button button--primary">Рассчитать стоимость</button>
+            <button type="button" class="button" id="calculator-reset">Очистить</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="card" id="result-section">
+        <h2>Итог</h2>
+        <div id="result-output" class="result">
+          <p>Введите данные и нажмите «Рассчитать стоимость», чтобы увидеть результат.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Калькулятор разработан для гибкой настройки ставок и оценки стоимости фотосъёмки.</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
